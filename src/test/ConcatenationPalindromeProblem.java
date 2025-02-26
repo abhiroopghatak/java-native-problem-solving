@@ -27,7 +27,7 @@ public class ConcatenationPalindromeProblem {
 
 class UtilClass {
     static  int[][] getIndexArrayList(String[] words) {
-        int[][] result = new int[words.length][2];
+        int[][] result = new int[words.length*(words.length-1)][2];
         int index=0;
         for (int i = 0; i < words.length; i++) {
             for (int j = i + 1; j < words.length; j++) {
