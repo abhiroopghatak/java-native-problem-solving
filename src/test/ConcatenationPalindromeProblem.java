@@ -1,5 +1,4 @@
 package test;
-
 /*
 Given a list of unique words, find all pairs of distinct indices (i, j) in the given list so that the concatenation of the two words, i.e., words[i] + words[j], is a palindrome.
 Example:
@@ -10,13 +9,12 @@ The palindromes are ["dcbaabcd","abcddcba","slls","llssssll"]
 
 
 */
-
-
 import java.util.Arrays;
 
 public class ConcatenationPalindromeProblem {
     public static void main(String... a) {
-        String[] words = { "abcd", "dcba", "lls", "s", "sssll", "abra" };
+        String[] words = { "abcd", "dcba", "lls", "s","ss", "sssll", "abra" };
+      //  String[] words = { "aa","aa"};
       int[][] result = UtilClass.getIndexArrayList(words);
        for (int[] is : result) {
         if(is[0] !=  is[1])
@@ -53,19 +51,30 @@ class UtilClass {
      * @return
      */
     static boolean isPalindrome(String s) {
-        boolean result = true;
+        boolean result = false;
         if (s == null || s.trim().isEmpty()) {
-            result = false;
-        } else if (s.length() % 2 != 0) {
-            result = false;
+            System.out.println("empty string received in isPalindrome function");
+        
         } else {
             s = s.replaceAll("\\s", "");
-            for (int i = 0; i < s.length() / 2; i++) {
-                if (s.charAt(i) != s.charAt(s.length() - 1 - i)) {
-                    result = false;
-                }
+            if(s.equals(reverseString(s))){
+                result=true;
             }
+           
         }
         return result;
+    }
+
+    static String reverseString(String s){
+        String r = "";
+        char ch;
+
+        for (int i = 0; i < s.length(); i++) {
+            ch = s.charAt(i);
+            // front of the existing string
+            r = ch + r; 
+        }
+
+        return r;
     }
 }
