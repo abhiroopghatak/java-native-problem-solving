@@ -51,30 +51,18 @@ class UtilClass {
      * @return
      */
     static boolean isPalindrome(String s) {
-        boolean result = false;
-        if (s == null || s.trim().isEmpty()) {
-            System.out.println("empty string received in isPalindrome function");
-        
-        } else {
-            s = s.replaceAll("\\s", "");
-            if(s.equals(reverseString(s))){
-                result=true;
+       // Remove spaces for clean comparison
+        str = str.replaceAll("\\s+", "");
+        int left = 0;
+        int right = str.length() - 1;
+        while (left < right) {
+            if (str.charAt(left) != str.charAt(right)) {
+                return false; // Characters don't match
             }
-           
+            left++;
+            right--;
         }
-        return result;
+        return true; // All characters matched
     }
-
-    static String reverseString(String s){
-        String r = "";
-        char ch;
-
-        for (int i = 0; i < s.length(); i++) {
-            ch = s.charAt(i);
-            // front of the existing string
-            r = ch + r; 
-        }
-
-        return r;
-    }
+ 
 }
